@@ -1,0 +1,350 @@
+/* =========================================
+   DETALLES (mobile primero)
+   Fondo claro + texto verde
+   ========================================= */
+.detalles {
+  background: var(--crema);
+  color: var(--oliva);
+}
+
+.detalles__subtitulo {
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: 2.25rem;
+  line-height: 1.25;
+  color: var(--oliva-oscuro);
+  text-wrap: balance; /* reparte las palabras parejas entre las líneas */
+  margin-top: 0.75rem;
+}
+
+/* Línea dorada con ✦ */
+.detalles__separador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 1rem 0 2rem;
+  color: var(--dorado);
+  font-size: 0.7rem;
+}
+
+.detalles__separador::before,
+.detalles__separador::after {
+  content: "";
+  width: 3rem;
+  height: 1px;
+  background: var(--dorado);
+  opacity: 0.6;
+}
+
+.detalles__lista {
+  max-width: 36rem;
+  margin: 0 auto;
+  border-bottom: 1px solid #e0d3bb;
+}
+
+/* ---------- Cada ítem ---------- */
+.detalle {
+  border-top: 1px solid #e0d3bb;
+}
+
+.detalle__cabecera {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1.1rem 0.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+}
+
+.detalle__icono {
+  flex: none;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  border: 1px solid var(--salvia);
+  color: var(--oliva-oscuro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detalle__icono svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.detalle__titulo {
+  flex: 1;
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--oliva-oscuro);
+}
+
+.detalle__flecha {
+  flex: none;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  background: var(--arena);
+  color: var(--oliva-oscuro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.detalle__flecha svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+/* Flecha cuando está abierto */
+.detalle--abierto .detalle__flecha {
+  background: var(--oliva-oscuro);
+  color: #fff;
+}
+
+.detalle--abierto .detalle__flecha svg {
+  transform: rotate(180deg);
+}
+
+/* ---------- Panel desplegable (animación suave) ---------- */
+.detalle__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+}
+
+.detalle--abierto .detalle__panel {
+  grid-template-rows: 1fr;
+}
+
+.detalle__contenido {
+  overflow: hidden;
+  text-align: center;
+}
+
+.detalle--abierto .detalle__contenido {
+  padding-bottom: 1.5rem;
+}
+
+/* ---------- Textos del contenido ---------- */
+.detalle__texto {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--texto);
+  text-wrap: pretty; /* evita palabras sueltas al final */
+}
+
+.detalle__destacado {
+  font-family: var(--font-script);
+  font-size: 2.75rem;
+  line-height: 1.2;
+  color: var(--oliva-oscuro);
+}
+
+.detalle__nota {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--oliva);
+  margin-top: 0.75rem;
+}
+
+/* ---------- CBU / Alias ---------- */
+.dato {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  padding: 0.75rem 0.75rem 0.75rem 1rem;
+  border: 1px solid #e0d3bb;
+  border-radius: 0.9rem;
+  background: #fffdf8;
+  text-align: left;
+}
+
+.dato__texto {
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* permite que el texto se acomode sin desbordar */
+}
+
+.dato__etiqueta {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dorado);
+}
+
+.dato__valor {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--texto);
+  margin-top: 0.2rem;
+  overflow-wrap: anywhere; /* el CBU baja de línea solo si no entra */
+}
+
+.dato__boton {
+  flex: none;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--oliva-oscuro);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dato__boton--ok {
+  background: var(--dorado);
+}
+
+/* ---------- Precios ---------- */
+.precio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid #e0d3bb;
+  border-radius: 0.9rem;
+  background: #fffdf8;
+  text-align: left;
+}
+
+.precio__texto {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--texto);
+}
+
+.precio__etiqueta {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dorado);
+  margin-bottom: 0.15rem;
+}
+
+.precio__valor {
+  flex: none;
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--oliva-oscuro);
+}
+
+.precio__valor--sin-cargo {
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--oliva);
+}
+
+/* =========================================
+   MEDIA QUERIES
+   ========================================= */
+
+/* Tablet */
+@media (min-width: 768px) {
+  .detalles__subtitulo {
+    font-size: 2.75rem;
+  }
+
+  .detalles__separador {
+    margin: 1.25rem 0 2.5rem;
+  }
+
+  .detalles__separador::before,
+  .detalles__separador::after {
+    width: 4.5rem;
+  }
+
+  .detalle__cabecera {
+    padding: 1.35rem 0.5rem;
+    gap: 1.1rem;
+  }
+
+  .detalle__icono {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .detalle__icono svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .detalle__titulo {
+    font-size: 1.6rem;
+  }
+
+  .detalle__texto {
+    font-size: 1.3rem;
+  }
+
+  .detalle__destacado {
+    font-size: 3.25rem;
+  }
+
+  .detalle__nota {
+    font-size: 1.15rem;
+  }
+
+  .dato,
+  .precio {
+    padding: 1rem 1rem 1rem 1.35rem;
+  }
+
+  .dato__valor {
+    font-size: 0.95rem;
+  }
+
+  .dato__boton {
+    font-size: 0.7rem;
+    padding: 0.7rem 1.2rem;
+  }
+
+  .precio__texto {
+    font-size: 0.9rem;
+  }
+
+  .precio__valor {
+    font-size: 1.85rem;
+  }
+}
+
+/* Escritorio */
+@media (min-width: 1200px) {
+  .detalles__subtitulo {
+    font-size: 3rem;
+  }
+
+  .detalle__titulo {
+    font-size: 1.75rem;
+  }
+
+  .detalle__destacado {
+    font-size: 3.5rem;
+  }
+}

@@ -1,0 +1,188 @@
+/* =========================================
+   CUENTA REGRESIVA (mobile primero)
+   Fondo claro + texto verde (inverso al Hero)
+   ========================================= */
+.cuenta {
+  background: var(--crema);
+  color: var(--oliva);
+}
+
+
+
+.cuenta__titulo {
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: 2.25rem;
+  line-height: 1.2;
+  margin: 0.75rem 0 0;
+}
+
+/* ---------- Círculo de los días ---------- */
+.cuenta__circulo {
+  position: relative;
+  width: 13rem;
+  height: 13rem;
+  margin: 2.25rem auto 3rem; /* deja lugar para los anillos */
+  border-radius: 50%;
+  border: 1px solid var(--oliva);
+  background: #fffdf8;
+  box-shadow: 0 0.75rem 2rem rgba(75, 86, 64, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Anillo dorado punteado que gira lento */
+.cuenta__circulo::before {
+  content: "";
+  position: absolute;
+  inset: -0.75rem;
+  border-radius: 50%;
+  border: 1px dashed var(--dorado);
+  animation: girar 40s linear infinite;
+}
+
+/* Halo que late suave */
+.cuenta__circulo::after {
+  content: "";
+  position: absolute;
+  inset: -1.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--salvia);
+  animation: latir 3s ease-in-out infinite;
+}
+
+.cuenta__dias {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 5.5rem;
+  line-height: 1;
+  color: var(--oliva-oscuro);
+}
+
+.cuenta__dias-texto {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+/* ---------- Horas / Min / Seg ---------- */
+.cuenta__detalle {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  max-width: 20rem;
+  margin: 0 auto;
+}
+
+.cuenta__caja {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0 0.75rem;
+  border: 1px solid rgba(111, 125, 92, 0.35);
+  border-radius: 1rem;
+  background: #fffdf8;
+  overflow: hidden;
+}
+
+.cuenta__numero {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--oliva-oscuro);
+}
+
+/* Los segundos "caen" en cada cambio */
+.cuenta__numero--tic {
+  animation: tic 0.5s ease;
+}
+
+.cuenta__texto {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 0.4rem;
+}
+
+
+
+/* ---------- Animaciones ---------- */
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes latir {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.15;
+  }
+}
+
+@keyframes tic {
+  from {
+    transform: translateY(-0.5rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   MEDIA QUERIES
+   ========================================= */
+
+/* Tablet */
+@media (min-width: 768px) {
+  
+
+  .cuenta__titulo {
+    font-size: 4rem;
+  }
+
+  .cuenta__circulo {
+    width: 16rem;
+    height: 16rem;
+    margin: 2.75rem auto 3.75rem;
+  }
+
+  .cuenta__dias {
+    font-size: 7rem;
+  }
+
+  .cuenta__detalle {
+    max-width: 24rem;
+    gap: 1rem;
+  }
+
+  .cuenta__numero {
+    font-size: 2.5rem;
+  }
+
+
+}
+
+/* Escritorio */
+@media (min-width: 1200px) {
+  .cuenta__circulo {
+    width: 18rem;
+    height: 18rem;
+  }
+
+  .cuenta__dias {
+    font-size: 8rem;
+  }
+}

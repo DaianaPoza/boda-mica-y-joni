@@ -1,0 +1,70 @@
+/* =========================================
+   BOTÓN DE MÚSICA (fijo abajo a la derecha)
+   ========================================= */
+.boton-musica {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 50;
+  width: 3.25rem;
+  height: 3.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid var(--crema);
+  background: var(--oliva-oscuro);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.boton-musica svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.boton-musica:hover {
+  transform: scale(1.06);
+}
+
+/* Onda suave mientras suena la música */
+.boton-musica--sonando::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 2px solid var(--dorado);
+  animation: onda 1.8s ease-out infinite;
+}
+
+@keyframes onda {
+  from {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   MEDIA QUERIES
+   ========================================= */
+
+/* Tablet */
+@media (min-width: 768px) {
+  .boton-musica {
+    right: 2rem;
+    bottom: 2rem;
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+
+  .boton-musica svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}

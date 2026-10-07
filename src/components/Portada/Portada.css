@@ -1,0 +1,186 @@
+/* =========================================
+   PORTADA (mobile primero)
+   ========================================= */
+.portada {
+  position: fixed;
+  inset: 0;
+  height: 100dvh;
+  overflow: hidden;
+  color: #fff;
+  z-index: 100;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.portada--saliendo {
+  opacity: 0;
+  transform: scale(1.04);
+}
+
+/* ---------- Fondo ---------- */
+.portada__fondo {
+  position: absolute;
+  inset: 0;
+  background-image: var(--foto-vertical);
+  background-size: cover;
+  background-position: center 30%;
+}
+
+/* Fondo provisorio hasta tener la foto */
+.portada__fondo--vacio {
+  background: linear-gradient(160deg, var(--salvia), var(--oliva) 55%, var(--oliva-oscuro));
+}
+
+/* Oscurece abajo para que el texto se lea sobre cualquier foto */
+.portada__sombra {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(40, 46, 34, 0.1), rgba(40, 46, 34, 0.8));
+}
+
+/* Marco decorativo */
+.portada__marco {
+  position: absolute;
+  inset: 1.125rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 0.25rem;
+  pointer-events: none;
+}
+
+/* ---------- Contenido ---------- */
+.portada__contenido {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12%;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.portada__etiqueta {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #efe6d4;
+}
+
+.portada__nombres {
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: min(3.75rem, 15vw); /* 60px, o menos si el celu es muy angosto */
+  line-height: 1.2;
+  white-space: nowrap; /* siempre en una sola línea */
+  margin: 0.75rem 0 1.25rem;
+}
+
+.portada__texto {
+  font-size: 1.2rem;
+  font-style: italic;
+  opacity: 0.92;
+  margin-bottom: 2rem;
+}
+
+.portada__boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 2.25rem;
+  border: none;
+  border-radius: 999px;
+  background: rgba(248, 244, 236, 0.95);
+  color: var(--oliva-oscuro);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.portada__boton svg {
+  width: 1.3em;
+  height: 1.3em;
+}
+
+.portada__boton:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+/* ---------- Animación de entrada ---------- */
+.portada__contenido > * {
+  opacity: 0;
+  animation: aparecer 1s ease forwards;
+}
+
+.portada__contenido > :nth-child(1) { animation-delay: 0.3s; }
+.portada__contenido > :nth-child(2) { animation-delay: 0.6s; }
+.portada__contenido > :nth-child(3) { animation-delay: 0.9s; }
+.portada__contenido > :nth-child(4) { animation-delay: 1.2s; }
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(0.875rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   MEDIA QUERIES
+   ========================================= */
+
+/* Pantallas más anchas que altas: usa la foto horizontal */
+@media (min-aspect-ratio: 1/1) {
+  .portada__fondo {
+    background-image: var(--foto-horizontal);
+    background-position: center;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .portada__marco {
+    inset: 1.75rem;
+  }
+
+  .portada__etiqueta {
+    font-size: 0.875rem;
+  }
+
+  .portada__nombres {
+    font-size: 5.5rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .portada__texto {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .portada__boton {
+    font-size: 0.85rem;
+    padding: 1.1rem 2.75rem;
+  }
+}
+
+/* Escritorio */
+@media (min-width: 1200px) {
+  .portada__marco {
+    inset: 2.5rem;
+  }
+
+  .portada__nombres {
+    font-size: 6.5rem;
+  }
+
+  .portada__texto {
+    font-size: 1.75rem;
+  }
+}

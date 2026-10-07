@@ -1,0 +1,134 @@
+/* =========================================
+   HERO (mobile primero)
+   ========================================= */
+.hero {
+  animation: hero-aparecer 1.2s ease;
+}
+
+/* ---------- Foto ---------- */
+.hero__foto {
+  width: 100%;
+  height: 70vh;
+  min-height: 26rem;
+  background-size: cover;
+  background-position: center 30%; /* prioriza las caras */
+}
+
+/* Fondo provisorio hasta tener la foto */
+.hero__foto--vacia {
+  background: linear-gradient(160deg, var(--salvia), var(--oliva) 55%, var(--oliva-oscuro));
+}
+
+/* ---------- Banda de texto ---------- */
+.hero__banda {
+  background: var(--oliva);
+  color: #fff;
+  text-align: center;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+.hero__titulo {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;            /* antes 0.8rem */
+  font-weight: 500;             /* nuevo: un poco más marcado */
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #fff;                  /* antes #efe6d4: blanco puro, más luminoso */
+  text-shadow: 0 0 0.75rem rgba(255, 244, 214, 0.6); /* nuevo: brillo suave */
+}
+
+.hero__nombres {
+  font-family: var(--font-script);
+  font-weight: 400;
+ font-size: min(3rem, 12vw);     /* antes min(3.5rem, 14vw) */
+  line-height: 1.2;
+  white-space: nowrap;
+  margin: 1rem 0 1rem;
+}
+
+/* Línea dorada con ✦ en el medio */
+.hero__separador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: #e3d4b4;
+  font-size: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.hero__separador::before,
+.hero__separador::after {
+  content: "";
+  width: 3rem;
+  height: 1px;
+  background: #e3d4b4;
+}
+
+.hero__fecha {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  letter-spacing: 0.15em;
+  font-weight: 800;
+}
+
+@keyframes hero-aparecer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   MEDIA QUERIES
+   ========================================= */
+
+/* Tablet */
+@media (min-width: 768px) {
+  .hero__foto {
+    height: 75vh;
+  }
+
+  .hero__banda {
+    padding: 3.5rem 2.5rem 4rem;
+  }
+
+ .hero__titulo {
+  font-size: 1.35rem;           /* antes 0.9rem */
+}
+
+.hero__nombres {
+  font-size: 4.25rem;           /* antes 5rem */
+}
+
+  .hero__separador::before,
+  .hero__separador::after {
+    width: 4.5rem;
+  }
+
+  .hero__fecha {
+    font-size: 2rem;
+  }
+}
+
+/* Escritorio */
+@media (min-width: 1200px) {
+  .hero__foto {
+    height: 85vh;
+  }
+
+.hero__titulo {
+  font-size: 1.5rem;            /* nuevo */
+}
+
+.hero__nombres {
+  font-size: 5rem;              /* antes 6rem */
+}
+
+  .hero__fecha {
+    font-size: 2.25rem;
+    
+  }
+}
