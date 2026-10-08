@@ -7,7 +7,7 @@ import CuentaRegresiva from "./components/CuentaRegresiva/CuentaRegresiva";
 import Lugares from "./components/Lugares/Lugares";
 import Detalles from "./components/Detalles/Detalles";
 import Confirmacion from "./components/Confirmacion/Confirmacion";
-
+import Aparecer from "./components/Aparecer/Aparecer";
 // ---------- Archivos (descomentá cuando los tengas) ----------
 // import fotoPortada from "./assets/img/foto-portada.jpg";
 // import fotoHero from "./assets/img/foto-hero.jpg";
@@ -72,10 +72,24 @@ function App() {
           <Hero
           // foto={fotoHero}
           />
+
+<Aparecer>
            <CuentaRegresiva /> 
+</Aparecer>
+
+<Aparecer>
           <Lugares />
+        </Aparecer>
+
+<Aparecer>
+
           <Detalles /> 
+</Aparecer>
+
+<Aparecer>
           <Confirmacion /> 
+</Aparecer>
+
           {/* <Cierre /> */}
 
           <BotonMusica sonando={sonando} onToggle={toggleMusica} />

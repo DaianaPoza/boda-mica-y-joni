@@ -1,0 +1,25 @@
+/* =========================================
+   ANIMACIÓN DE APARICIÓN AL SCROLLEAR
+   Solo anima opacity y transform: son las
+   propiedades más livianas para el navegador.
+   ========================================= */
+.aparecer {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+
+.aparecer--visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Si la persona tiene desactivadas las animaciones en su celular,
+   las secciones se muestran directamente */
+@media (prefers-reduced-motion: reduce) {
+  .aparecer {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
