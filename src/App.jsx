@@ -6,6 +6,8 @@ import cancion from "./assets/musica/cancion.mp3";
 import CuentaRegresiva from "./components/CuentaRegresiva/CuentaRegresiva";
 import Lugares from "./components/Lugares/Lugares";
 import Detalles from "./components/Detalles/Detalles";
+import Confirmacion from "./components/Confirmacion/Confirmacion";
+
 // ---------- Archivos (descomentá cuando los tengas) ----------
 // import fotoPortada from "./assets/img/foto-portada.jpg";
 // import fotoHero from "./assets/img/foto-hero.jpg";
@@ -15,7 +17,7 @@ import Detalles from "./components/Detalles/Detalles";
 
 
 
-// import Confirmacion from "./components/Confirmacion/Confirmacion";
+
 // import Cierre from "./components/Cierre/Cierre";
 
 function App() {
@@ -73,7 +75,7 @@ function App() {
            <CuentaRegresiva /> 
           <Lugares />
           <Detalles /> 
-          {/* <Confirmacion /> */}
+          <Confirmacion /> 
           {/* <Cierre /> */}
 
           <BotonMusica sonando={sonando} onToggle={toggleMusica} />

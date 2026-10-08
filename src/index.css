@@ -85,6 +85,16 @@ body.sin-scroll {
   color: #efe6d4;
 }
 
+/* Títulos largos: siempre en una sola línea en celulares */
+.titulo-seccion--una-linea {
+  white-space: nowrap;              /* no baja de línea */
+  letter-spacing: 0.2em;            /* un poco menos de espacio entre letras */
+  font-size: min(0.95rem, 4.2vw);   /* se achica apenas si el celu es muy angosto */
+}
+
+
+
+
 /* Tablet */
 @media (min-width: 768px) {
   /* ...lo que ya está... */
@@ -92,6 +102,11 @@ body.sin-scroll {
   .titulo-seccion {
     font-size: 1.15rem;
   }
+
+  .titulo-seccion--una-linea {
+  letter-spacing: 0.35em;
+  font-size: 1.15rem;
+}
 }
 
 /* Escritorio */

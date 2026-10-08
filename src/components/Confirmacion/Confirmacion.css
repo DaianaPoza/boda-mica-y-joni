@@ -1,0 +1,246 @@
+/* =========================================
+   CONFIRMACIÓN (mobile primero)
+   Fondo verde + campos claros
+   ========================================= */
+.confirmacion {
+  background: var(--oliva);
+  color: #fff;
+}
+
+.confirmacion__titulo {
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-top: 0.75rem;
+  text-wrap: balance;
+  margin:2rem;
+}
+
+.confirmacion__texto {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  line-height: 1.45;
+  color: #efe6d4;
+  margin-top: 0.5rem;
+  text-wrap: pretty;
+}
+
+/* Fecha límite: línea dorada arriba y abajo */
+.confirmacion__limite {
+  max-width: 22rem;
+  margin: 1.75rem auto 0;
+  padding: 0.9rem 0;
+  border-top: 1px solid rgba(227, 212, 180, 0.6);
+  border-bottom: 1px solid rgba(227, 212, 180, 0.6);
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.4;
+  color: #efe6d4;
+  text-wrap: balance;
+}
+
+.confirmacion__limite strong {
+  font-style: normal;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* ---------- Formulario ---------- */
+.formulario {
+  max-width: 32rem;
+  margin: 2.5rem auto 0;
+  text-align: left;
+}
+
+.campo {
+  display: block;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.campo__etiqueta {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  color: #efe6d4;
+  margin-bottom: 0.5rem;
+  
+}
+
+.campo__ayuda {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(239, 230, 212, 0.8);
+  margin: -0.25rem 0 0.5rem;
+}
+
+.campo__input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.9rem;
+  background: var(--crema);
+  color: var(--texto);
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.campo__input::placeholder {
+  color: #9a9a8a;
+  font-style: italic;
+}
+
+.campo__input:focus {
+  outline: none;
+  border-color: var(--dorado);
+  box-shadow: 0 0 0 3px rgba(184, 151, 106, 0.35);
+}
+
+.campo__input--texto {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+/* ---------- Botones Sí / No ---------- */
+.opciones {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.opcion {
+  flex: 1;
+  padding: 0.8rem 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.opcion--activa {
+  background: var(--crema);
+  border-color: var(--crema);
+  color: var(--oliva-oscuro);
+  font-weight: 500;
+}
+
+/* ---------- Grupo de acompañantes ---------- */
+.persona {
+  border: 1px solid rgba(227, 212, 180, 0.5);
+  border-radius: 1.25rem;
+  padding: 1.25rem 1.1rem 0.25rem;
+  margin: 0 0 1.5rem;
+}
+
+.persona__titulo {
+  padding: 0 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #e3d4b4;
+}
+
+/* ---------- Error y botón ---------- */
+.formulario__error {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  text-align: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.formulario__boton {
+  width: 100%;
+  padding: 1.1rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--crema);
+  color: var(--oliva-oscuro);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0.5rem 1.25rem rgba(40, 46, 34, 0.25);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.formulario__boton:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+.formulario__boton:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+/* ---------- Mensaje final ---------- */
+.confirmacion__gracias {
+  padding: 2rem 0 1rem;
+}
+
+/* =========================================
+   MEDIA QUERIES
+   ========================================= */
+
+/* Tablet */
+@media (min-width: 768px) {
+  .confirmacion__titulo {
+    font-size: 3.25rem;
+  }
+
+  .confirmacion__texto {
+    font-size: 1.35rem;
+  }
+
+  .confirmacion__limite {
+    max-width: 28rem;
+    font-size: 1.2rem;
+  }
+
+  .campo__etiqueta,
+  .persona__titulo {
+    font-size: 0.8rem;
+  }
+
+  .campo__input {
+    font-size: 1.25rem;
+  }
+
+  .opcion {
+    font-size: 0.8rem;
+  }
+
+  .persona {
+    padding: 1.5rem 1.5rem 0.25rem;
+  }
+}
+
+/* Escritorio */
+@media (min-width: 1200px) {
+  .confirmacion__titulo {
+    font-size: 3.5rem;
+  }
+}
