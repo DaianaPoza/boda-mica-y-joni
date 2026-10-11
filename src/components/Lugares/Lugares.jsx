@@ -14,7 +14,7 @@ const LUGARES = [
     hora: "21:00 hs",
     nombre: "Capilla Nuestra Señora de la Merced",
     
-    mapa: buscarEnMaps("Capilla Nuestra Señora de la Merced, Christophersen, Santa Fe"),
+    mapa: "https://maps.app.goo.gl/RFHZuPi2d3hT3FiH9",
     icono: "iglesia",
   },
   {

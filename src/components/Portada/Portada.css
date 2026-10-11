@@ -7,6 +7,7 @@
   height: 100dvh;
   overflow: hidden;
   color: #fff;
+  background: var(--oliva); /* verde de la tarjeta alrededor de la foto */
   z-index: 100;
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
@@ -16,13 +17,31 @@
   transform: scale(1.04);
 }
 
-/* ---------- Fondo ---------- */
+/* ---------- Foto ---------- */
 .portada__fondo {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto; /* centrada */
+  width: min(100%, 75dvh); /* nunca más ancha que la pantalla ni que su proporción */
+  aspect-ratio: 3 / 4; /* la foto mantiene siempre su forma: no se recorta ni se deforma */
   background-image: var(--foto-vertical);
   background-size: cover;
-  background-position: center 30%;
+  background-position: center;
+  animation: zoom-lento 18s ease-out forwards; /* efecto Ken Burns */
+
+  /* Bordes de arriba y abajo fundidos con el verde */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 70%, transparent 100%);
+}
+
+/* Velo blanco suave: le da luminosidad a la foto */
+.portada__fondo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 /* Fondo provisorio hasta tener la foto */
@@ -30,20 +49,17 @@
   background: linear-gradient(160deg, var(--salvia), var(--oliva) 55%, var(--oliva-oscuro));
 }
 
-/* Oscurece abajo para que el texto se lea sobre cualquier foto */
+/* Degradé verde sutil arriba y más presente abajo (donde va el texto) */
 .portada__sombra {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(40, 46, 34, 0.1), rgba(40, 46, 34, 0.8));
-}
-
-/* Marco decorativo */
-.portada__marco {
-  position: absolute;
-  inset: 1.125rem;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  border-radius: 0.25rem;
-  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(111, 125, 92, 0.35) 0%,
+    rgba(111, 125, 92, 0) 20%,
+    rgba(111, 125, 92, 0) 45%,
+    rgba(75, 86, 64, 0.85) 100%
+  );
 }
 
 /* ---------- Contenido ---------- */
@@ -110,7 +126,7 @@
   transform: translateY(-2px);
 }
 
-/* ---------- Animación de entrada ---------- */
+/* ---------- Animaciones ---------- */
 .portada__contenido > * {
   opacity: 0;
   animation: aparecer 1s ease forwards;
@@ -132,24 +148,44 @@
   }
 }
 
+/* Zoom muy lento de la foto (solo usa transform: liviano) */
+@keyframes zoom-lento {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
 /* =========================================
    MEDIA QUERIES
    ========================================= */
 
-/* Pantallas más anchas que altas: usa la foto horizontal */
-@media (min-aspect-ratio: 1/1) {
+/* Sin zoom si el celular tiene las animaciones desactivadas */
+@media (prefers-reduced-motion: reduce) {
   .portada__fondo {
-    background-image: var(--foto-horizontal);
-    background-position: center;
+    animation: none;
+  }
+}
+
+/* Pantallas más anchas que la foto (tablet acostada, compu):
+   aparece verde a los costados y los bordes laterales también se difuminan */
+@media (min-aspect-ratio: 3/4) {
+  .portada__fondo {
+    -webkit-mask-image:
+      linear-gradient(to bottom, transparent 0%, #000 14%, #000 70%, transparent 100%),
+      linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to bottom, transparent 0%, #000 14%, #000 70%, transparent 100%),
+      linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
+    mask-composite: intersect;
   }
 }
 
 /* Tablet */
 @media (min-width: 768px) {
-  .portada__marco {
-    inset: 1.75rem;
-  }
-
   .portada__etiqueta {
     font-size: 0.875rem;
   }
@@ -172,15 +208,32 @@
 
 /* Escritorio */
 @media (min-width: 1200px) {
-  .portada__marco {
-    inset: 2.5rem;
-  }
-
   .portada__nombres {
     font-size: 6.5rem;
   }
 
   .portada__texto {
     font-size: 1.75rem;
+  }
+}
+
+
+
+
+/* Pantallas acostadas (tablet horizontal, notebook, compu):
+   el texto baja y se achica un poco para no tapar el anillo */
+@media (min-aspect-ratio: 1/1) {
+  .portada__contenido {
+    bottom: 5%;                        /* antes 12%: el texto baja */
+  }
+
+  .portada__nombres {
+    font-size: min(6.5rem, 10vh);      /* se adapta al alto de la pantalla */
+    margin: 0.5rem 0 0.75rem;
+  }
+
+  .portada__texto {
+    font-size: min(1.75rem, 3.2vh);
+    margin-bottom: 1.5rem;
   }
 }

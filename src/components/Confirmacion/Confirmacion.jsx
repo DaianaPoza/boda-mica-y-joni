@@ -1,5 +1,6 @@
-import { useState } from "react";
+
 import "./Confirmacion.css";
+import { useState, useRef, useEffect } from "react";
 
 // ---------- Configuración ----------
 // Pegá acá la URL de la implementación de Apps Script (termina en /exec)
@@ -14,6 +15,17 @@ function Confirmacion() {
   const [mensaje, setMensaje] = useState("");
   const [error, setError] = useState("");
   const [estado, setEstado] = useState("formulario"); // formulario | enviando | enviado
+
+
+  const seccionRef = useRef(null);
+
+  // Cuando se envía, sube suavemente hasta el mensaje de agradecimiento
+  useEffect(() => {
+    if (estado === "enviado") {
+      seccionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [estado]);
+
 
   // Cambia la cantidad total sin perder los nombres ya escritos
   const cambiarCantidad = (total) => {
@@ -72,18 +84,31 @@ function Confirmacion() {
   // ---------- Mensaje final ----------
   if (estado === "enviado") {
     return (
-      <section className="seccion confirmacion" id="confirmacion">
+      <section className="seccion confirmacion" id="confirmacion" ref={seccionRef}>
         <div className="contenedor">
           <p className="titulo-seccion titulo-seccion--claro">Confirmación</p>
           <div className="confirmacion__gracias">
-            <h2 className="confirmacion__titulo">
-              {asiste ? "¡Gracias por confirmar!" : "¡Gracias por avisarnos!"}
-            </h2>
-            <p className="confirmacion__texto">
-              {asiste
-                ? "Recibimos tu respuesta. ¡Nos vemos el 26 de diciembre!"
-                : "Te vamos a extrañar. Gracias por tu cariño."}
-            </p>
+          
+<h2 className="confirmacion__titulo confirmacion__titulo--gracias">
+  {asiste ? "Gracias por confirmar" : "Gracias por avisarnos"}
+</h2>
+
+          
+{asiste ? (
+  <p className="confirmacion__texto">
+    Recibimos tu respuesta.
+    <br />
+    ¡Nos vemos el 26 de diciembre!
+  </p>
+) : (
+  <p className="confirmacion__texto">
+    ¡Te vamos a extrañar!
+    <br />
+    Gracias por tu cariño
+  </p>
+)}
+
+
           </div>
         </div>
       </section>
@@ -92,7 +117,7 @@ function Confirmacion() {
 
   // ---------- Formulario ----------
   return (
-    <section className="seccion confirmacion" id="confirmacion">
+    <section className="seccion confirmacion" id="confirmacion" ref={seccionRef}>
       <div className="contenedor">
         <p className="titulo-seccion titulo-seccion--claro titulo-seccion--una-linea">Confirmá tu asistencia</p>
         <h2 className="confirmacion__titulo">¿Nos acompañás?</h2>

@@ -1,0 +1,120 @@
+/* =========================================
+   CIERRE (mobile primero)
+   Foto fundida en el crema + texto final
+   ========================================= */
+.cierre {
+  background: var(--crema);
+  color: var(--oliva);
+  padding-bottom: 4rem;
+}
+
+/* ---------- Foto ---------- */
+.cierre__foto {
+  position: relative;
+  width: min(100%, 70vh); /* en pantallas anchas no crece más que esto */
+  aspect-ratio: 3 / 4; /* foto completa: nunca se recorta ni se deforma */
+  margin: 0 auto;
+  background-size: cover;
+  background-position: center;
+
+  /* Arriba: fundido corto. Abajo: fundido largo, donde va el texto */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 5%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 5%, transparent 100%);
+}
+
+/* Velo crema suave sobre toda la foto */
+.cierre__foto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(248, 244, 236, 0.15);
+}
+
+/* ---------- Texto ---------- */
+.cierre__contenido {
+  position: relative; /* queda por encima de la foto */
+  max-width: 32rem;
+  margin: -8rem auto 0; /* sube sobre la parte difuminada */
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+
+.cierre__texto {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 600;                 /* antes 800 (ver nota abajo) */
+  line-height: 1.5;
+  margin-top: 0.75rem;
+  text-wrap: balance;
+  color: var(--oliva-oscuro);       /* NUEVO: verde más oscuro, contrasta más */
+
+  /* NUEVO: halo crema alrededor de las letras, las separa de la foto */
+  text-shadow:
+    0 0 0.4rem rgba(248, 244, 236, 0.95),
+    0 0 1rem rgba(248, 244, 236, 0.8),
+    0 0 2rem rgba(248, 244, 236, 0.6);
+}
+
+.cierre__firma {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--dorado);
+  margin-top: 1.75rem;
+}
+
+/* =========================================
+   MEDIA QUERIES
+   ========================================= */
+
+/* Pantallas anchas: crema a los costados y bordes laterales difuminados */
+@media (min-aspect-ratio: 7/10) {
+  .cierre__foto {
+    -webkit-mask-image:
+      linear-gradient(to bottom, transparent 0%, #000 8%, #000 50%, transparent 100%),
+      linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to bottom, transparent 0%, #000 8%, #000 50%, transparent 100%),
+      linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+    mask-composite: intersect;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .cierre {
+    padding-bottom: 5.5rem;
+  }
+
+  .cierre__contenido {
+    margin-top: -10rem;
+  }
+
+  .cierre__titulo {
+    font-size: 3.75rem;
+  }
+
+  .cierre__texto {
+    font-size: 1.35rem;
+  }
+
+  .cierre__firma {
+    font-size: 0.85rem;
+  }
+}
+
+/* Escritorio */
+@media (min-width: 1200px) {
+  .cierre {
+    padding-bottom: 7rem;
+  }
+
+  .cierre__titulo {
+    font-size: 4.25rem;
+  }
+}

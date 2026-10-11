@@ -10,12 +10,23 @@
 .confirmacion__titulo {
   font-family: var(--font-script);
   font-weight: 400;
-  font-size: 2rem;
+  font-size: min(2.75rem, 11vw);
   line-height: 1.2;
-  margin-top: 0.75rem;
-  text-wrap: balance;
-  margin:2rem;
+  margin-top: 0.75rem;   /* solo margen arriba */
+  white-space: nowrap;
 }
+
+
+/* Títulos del mensaje final: pueden bajar de línea y quedan siempre centrados */
+.confirmacion__titulo--gracias {
+  white-space: normal;   /* anula el nowrap de "¿Nos acompañás?" */
+  text-wrap: balance;    /* si baja de línea, reparte las palabras parejas */
+}
+
+
+
+
+
 
 .confirmacion__texto {
   font-family: var(--font-serif);

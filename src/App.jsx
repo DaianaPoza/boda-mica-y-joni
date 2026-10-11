@@ -1,24 +1,22 @@
 import { useState, useEffect, useRef } from "react";
+
+// ---------- Componentes ----------
 import Portada from "./components/Portada/Portada";
 import Hero from "./components/Hero/Hero";
-import BotonMusica from "./components/BotonMusica/BotonMusica";
-import cancion from "./assets/musica/cancion.mp3";
 import CuentaRegresiva from "./components/CuentaRegresiva/CuentaRegresiva";
 import Lugares from "./components/Lugares/Lugares";
 import Detalles from "./components/Detalles/Detalles";
 import Confirmacion from "./components/Confirmacion/Confirmacion";
+import Cierre from "./components/Cierre/Cierre";
 import Aparecer from "./components/Aparecer/Aparecer";
-// ---------- Archivos (descomentá cuando los tengas) ----------
-// import fotoPortada from "./assets/img/foto-portada.jpg";
-// import fotoHero from "./assets/img/foto-hero.jpg";
+import BotonMusica from "./components/BotonMusica/BotonMusica";
 
-// Próximos componentes:
-// import Fecha from "./components/Fecha/Fecha";
-
-
-
-
-// import Cierre from "./components/Cierre/Cierre";
+// ---------- Fotos y música ----------
+import fotoPortada from "./assets/img/foto-portada.webp";
+import fotoPortadaHorizontal from "./assets/img/foto-portada-horizontal.webp";
+import fotoHero from "./assets/img/foto-hero.webp";
+import fotoCierre from "./assets/img/foto-cierre.webp";
+import cancion from "./assets/musica/cancion.mp3";
 
 function App() {
   const [ingreso, setIngreso] = useState(false);
@@ -50,48 +48,48 @@ function App() {
   return (
     <>
       {/* Audio: loop = se repite al terminar */}
-      {cancion && (
-        <audio
-          ref={audioRef}
-          src={cancion}
-          loop
-          onPlay={() => setSonando(true)}
-          onPause={() => setSonando(false)}
-        />
-      )}
+      <audio
+        ref={audioRef}
+        src={cancion}
+        loop
+        onPlay={() => setSonando(true)}
+        onPause={() => setSonando(false)}
+      />
 
       {!ingreso && (
         <Portada
           onIngresar={handleIngresar}
-          // foto={fotoPortada}
+          foto={fotoPortada}
+          fotoHorizontal={fotoPortadaHorizontal}
         />
       )}
 
       {ingreso && (
         <main>
-          <Hero
-          // foto={fotoHero}
-          />
+          <Hero foto={fotoHero} />
 
-<Aparecer>
-           <CuentaRegresiva /> 
-</Aparecer>
+          {/* Cada sección aparece al scrollear */}
+          <Aparecer>
+            <CuentaRegresiva />
+          </Aparecer>
 
-<Aparecer>
-          <Lugares />
-        </Aparecer>
+          <Aparecer>
+            <Lugares />
+          </Aparecer>
 
-<Aparecer>
+          <Aparecer>
+            <Detalles />
+          </Aparecer>
 
-          <Detalles /> 
-</Aparecer>
+          <Aparecer>
+            <Confirmacion />
+          </Aparecer>
 
-<Aparecer>
-          <Confirmacion /> 
-</Aparecer>
+          <Aparecer>
+            <Cierre foto={fotoCierre} />
+          </Aparecer>
 
-          {/* <Cierre /> */}
-
+          {/* Fuera de <Aparecer> para que quede siempre fijo en pantalla */}
           <BotonMusica sonando={sonando} onToggle={toggleMusica} />
         </main>
       )}

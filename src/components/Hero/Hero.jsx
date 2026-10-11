@@ -3,11 +3,13 @@ import "./Hero.css";
 function Hero({ foto }) {
   return (
     <header className="hero">
-      {/* Foto: si todavía no está, muestra un fondo oliva */}
-      <div
-        className={`hero__foto ${foto ? "" : "hero__foto--vacia"}`}
-        style={foto ? { backgroundImage: `url(${foto})` } : undefined}
-      />
+      {/* Foto centrada sobre fondo crema, con los bordes difuminados */}
+      <div className="hero__marco">
+        <div
+          className={`hero__foto ${foto ? "" : "hero__foto--vacia"}`}
+          style={foto ? { backgroundImage: `url(${foto})` } : undefined}
+        />
+      </div>
 
       <div className="hero__banda">
         <p className="hero__titulo">¡Nos casamos!</p>

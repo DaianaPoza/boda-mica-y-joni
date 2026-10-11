@@ -30,12 +30,12 @@ function Portada({ onIngresar, foto, fotoHorizontal }) {
         style={estiloFondo}
       />
       <div className="portada__sombra" />
-      <div className="portada__marco" />
+      
 
       <div className="portada__contenido">
         <p className="portada__etiqueta">Bienvenidos</p>
         <h1 className="portada__nombres">Mica y Joni</h1>
-        <p className="portada__texto">Tenemos algo muy especial para contarte</p>
+        <p className="portada__texto">Tenemos algo muy especial  <br /> para contarte</p>
 
         <button className="portada__boton" onClick={handleClick}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">

@@ -2,9 +2,9 @@ import { useState } from "react";
 import "./Detalles.css";
 
 // ---------- Datos bancarios (reemplazar por los reales) ----------
-const CBU = "definir";
-const ALIAS = "definir";
-const TITULAR = "Nombre Apellido · Banco";
+const CBU = "0000003100056323070161";
+const ALIAS = "serviciosfyr.mp";
+
 
 // ---------- Botón para copiar un dato ----------
 function CopiarDato({ etiqueta, valor }) {
@@ -90,7 +90,7 @@ const ITEMS = [
         </p>
         <CopiarDato etiqueta="CBU" valor={CBU} />
         <CopiarDato etiqueta="Alias" valor={ALIAS} />
-        <p className="detalle__nota">Titular: {TITULAR}</p>
+        
       </>
     ),
   },
