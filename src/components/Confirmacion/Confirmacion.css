@@ -58,6 +58,60 @@
   color: #fff;
 }
 
+
+/* Pago de la tarjeta: texto + botón de WhatsApp */
+.confirmacion__pago {
+  max-width: 22rem;
+  margin: 1.25rem auto 0;
+}
+
+.confirmacion__pago-texto {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #efe6d4;
+  text-wrap: balance;
+}
+
+.confirmacion__pago-texto strong {
+  font-weight: 600;
+  color: #fff;
+}
+
+.confirmacion__whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid rgba(227, 212, 180, 0.7);
+  border-radius: 999px;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.confirmacion__whatsapp svg {
+  width: 1.3em;
+  height: 1.3em;
+}
+
+.confirmacion__whatsapp:hover {
+  background: var(--crema);
+  color: var(--oliva-oscuro);
+}
+
+
+
+
+
+
+
+
 /* ---------- Formulario ---------- */
 .formulario {
   max-width: 32rem;
@@ -230,6 +284,23 @@
     max-width: 28rem;
     font-size: 1.2rem;
   }
+
+
+  .confirmacion__pago {
+    max-width: 28rem;
+  }
+
+  .confirmacion__pago-texto {
+    font-size: 1.2rem;
+  }
+
+  .confirmacion__whatsapp {
+    font-size: 0.8rem;
+  }
+
+
+
+
 
   .campo__etiqueta,
   .persona__titulo {

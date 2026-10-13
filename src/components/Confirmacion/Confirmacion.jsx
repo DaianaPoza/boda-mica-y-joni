@@ -8,6 +8,17 @@ const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxSpC2H7omLc91I9RBcq
 const FECHA_LIMITE = "5 de diciembre"; // fecha límite para confirmar y abonar
 const MAXIMO_PERSONAS = 8; // cuántas personas se pueden elegir como máximo
 
+const WHATSAPP_VISIBLE = "3462 388391"; // como se lee en la tarjeta
+const WHATSAPP_LINK =
+  "https://wa.me/5493462388391?text=" +
+  encodeURIComponent("¡Hola! Te envío el comprobante de pago de la tarjeta para la boda de Mica y Joni. Mi nombre es: ");
+
+
+
+
+
+
+
 function Confirmacion() {
   const [nombre, setNombre] = useState("");
   const [asiste, setAsiste] = useState(null); // true | false | null
@@ -127,6 +138,33 @@ function Confirmacion() {
         <p className="confirmacion__limite">
           Confirmá y aboná tu tarjeta antes del <strong>{FECHA_LIMITE}</strong>
         </p>
+
+
+        {/* Pago de la tarjeta y comprobante */}
+        <div className="confirmacion__pago">
+          <p className="confirmacion__pago-texto">
+            Podés abonarla en la <strong>misma cuenta de la sección Regalo</strong> y
+            enviar el comprobante de pago por WhatsApp
+            
+          </p>
+          <a
+            className="confirmacion__whatsapp"
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"
+              />
+            </svg>
+            Enviar comprobante
+          </a>
+        </div>
+
+
+
 
         <form className="formulario" onSubmit={enviar} noValidate>
           {/* Nombre */}
